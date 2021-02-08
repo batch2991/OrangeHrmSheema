@@ -1,0 +1,8 @@
+<suite name="orangehrm">
+<test name = "OrangeHRM_Testing">
+<classes>
+<class name="base.BasePage" />
+<class name ="test_execution.PimTest" />
+</classes>
+</test>
+</suite>
