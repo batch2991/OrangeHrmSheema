@@ -13,7 +13,12 @@ Then the dashboard page is displayed
     Given user is on the dashboard page
     When user click on PIM and clicks on employee list
     Then employee information page is displayed
-    
+ 
+@idsearch
+Scenario: Verify search with employee id
+Given user is on employee information page 
+When user enters the id in search field and clicks search button
+Then list of employees with the id is displayed 
 
  @addemp 
   Scenario Outline: Verify admin is able to add a new employee
@@ -32,4 +37,8 @@ Then the dashboard page is displayed
     When click the check box of the employee click delete and click OK on the dialog window
     Then  user should be deleted successfully and message is displayed 
 
+
+
+
+   
    

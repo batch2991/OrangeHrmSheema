@@ -27,7 +27,7 @@ public class PimSteps
 	    public void user_click_on_pim_and_clicks_on_employee_list() throws Throwable
 	    {
 	    	pimPage.clickpimlink();
-	   
+	    	pimPage.clickEmployeeList();
 	    }
 
 	    @Then("^employee information page is displayed$")
@@ -37,12 +37,27 @@ public class PimSteps
 	    	pimPage.validateEmployeeinfoPage();
 	    }
 	    
+//============================search with id================================	    	
+
+        @When("^user enters the id in search field and clicks search button$")
+        public void user_enters_the_id_in_search_field_and_clicks_search_button() throws Throwable {
+          pimPage.entersearchid();
+          pimPage.clickSearch();
+        }
+
+        @Then("^list of employees with the id is displayed$")
+        public void list_of_employees_with_the_id_is_displayed() throws Throwable {
+            pimPage.validateSearchid();
+        }
+        
 //////////*******************************addemployee******************
 	    @Given("^user is on employee information page$")
 	    public void user_is_on_employee_information_page() throws Throwable 
 	    {
 	    	pimPage.clickpimBtn();
+	    	pimPage.clickEmployeeList();
 	    	pimPage.validateEmployeeinfoPage();
+	    	
 	    }
 	    
 
@@ -93,7 +108,7 @@ public class PimSteps
 	    		 pimPage.logout();	   
 	    	}
 
-
+	        
 }
 
 	  

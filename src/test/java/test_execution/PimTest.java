@@ -11,9 +11,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 		features = {"/OrangeHRM/src/test/java/test_execution/pim_users.feature"},
 		
 		glue= {"test_execution"},
-		tags = "@addemp"
-		
-		
+		tags = "@pim"
+				
 		)
 
 

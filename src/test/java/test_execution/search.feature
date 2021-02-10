@@ -13,7 +13,7 @@ Then the dashboard page is displayed
  Then list of employees with the user name displayed
       Examples: 
       | username  |
-      | Aaliyah.Haq | 
+      | json.format | 
        
       
       

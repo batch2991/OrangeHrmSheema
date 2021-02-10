@@ -39,6 +39,10 @@ public class PimPage extends BasePage
 	@FindBy(id="welcome") static WebElement welcome;
 	@FindBy(linkText="Logout") static WebElement signout;
 	
+	@FindBy(xpath = "//input [@id='empsearch_id']") static WebElement searchidtxtbx;
+	@FindBy(id = "searchBtn" )static WebElement searchbtn;
+	
+	
 	public void initialise()
 		{
 			
@@ -78,8 +82,7 @@ public class PimPage extends BasePage
 		}
 		
 		
-		
-		
+				
 public void clickpimlink()
 {
 	pimlink.click();
@@ -155,7 +158,6 @@ public void clickpimlink()
 	    	 // lname= driver.findElements(By.xpath("//table[@id='resultTable']/tbody/tr["+r+"]/td[4]")).getText();
 	    	 
 	    		if(firstname.equals(prop.getProperty("firstname")) && lastname.equals(prop.getProperty("lastname")))
-	    		//if(firstname.matches("apple") && lastname.matches("apple"))
 	    	  {
 	    	   driver.findElement(By.xpath("(//input[@name='chkSelectRow[]'])["+(r)+"]")).click();
 	    	 break;
@@ -294,5 +296,44 @@ public void clickpimlink()
 	    		}catch(Exception e) {System.out.println("Not is dashboard page to  logout");}
 	    	
 		}
+
+	    	
+	    	
+	    public void entersearchid()
+	    {
+	    	searchidtxtbx.clear();
+	    	searchidtxtbx.sendKeys(prop.getProperty("searchid"));
+	    }
+	    
+
+public void validateSearchid()
+{
+	
+	int rows=driver.findElements(By.xpath("//table[@id='resultTable']/tbody/tr")).size();
+	 int columns=driver.findElements(By.xpath("//table[@id='resultTable']/tbody/tr/td")).size();
+	 int r,c;
+ 
+ 	 for(r=1;r<=rows;r++)
+ 	 {
+ 		for(c=1;c<=columns;c++)
+ 	 	 {
+		String id=driver.findElement(By.xpath("//table[@id='resultTable']/tbody/tr["+r+"]/td["+c+"]")).getText();
+		
+		
+	if (id.matches(prop.getProperty("searchid")))
+	{
+		testlog=ext.createTest("searchid");
+		testlog.log(Status.PASS, "search with id results matching");
+		takescreenshot("searchid.png");
+		break;
+	}
+	System.out.print(id+"  ");
+	
+ 	 } 		
+ 		System.out.println();
+ 	 }
+ 	 
+ 	 }
+
 
 }
